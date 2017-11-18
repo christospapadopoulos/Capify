@@ -1,0 +1,34 @@
+This project is a simple REST API to retrieve, insert, update and delete
+employees from a MySQL DB.
+
+* File /capify.mysql is a dump of the database used.
+
+* Connection settings for the database are in src/Constants.php
+
+* File /consume.php contains curl commands to quickly consume the service via
+the command line:
+     - Retrieve all employees,
+     - Retrieve specific employee by Id,
+     - Insert employee,
+     - Update employee by Id,
+     - Delete employee by Id.
+
+
+Since this simple example is not very good for demonstrating OO, I decided to
+use a singleton (since we discussed this in the interview) for the DB connection
+and one for storing project-wise constants.
+
+Another approach would be to define a Product object and use it for validation
+of parameters (for insert and update), instead of directly ushing values to the
+DB, attempt to create an object (which will fail if any of the parameters are
+invalid) and catch any InvlidParameter Exception thrown by the Product
+constructor. If none, commit the product to the database.
+
+
+--------------------------------------------------------------------------------
+PS -- After our disussion about how REST works, I found this article which
+describes the implementation of a REST API similar to what I had worked worked
+with (I only wrote an extension based on the implementation our client already
+had):
+https://www.codeofaninja.com/2017/02/create-simple-rest-api-in-php.html
+I have to say I prefer the approach in this mini project, not the link above!
